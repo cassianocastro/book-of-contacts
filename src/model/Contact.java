@@ -2,15 +2,19 @@ package model;
 
 import java.util.Date;
 
-public class Contact {
+/**
+ *
+ */
+public class Contact
+{
 
     private int id;
     private String name, nacionality;
     private char sex;
     private Date dateNasc;
 
-
-    public Contact(int id, String name, char sex, Date dateNasc, String nacionality) {
+    public Contact(int id, String name, char sex, Date dateNasc, String nacionality)
+    {
         this.id          = id;
         this.name        = name;
         this.sex         = sex;
@@ -18,43 +22,53 @@ public class Contact {
         this.nacionality = nacionality;
     }
 
-    public int getID() {
+    public int getID()
+    {
         return this.id;
     }
 
-    public void setID(int id) {
+    public void setID(int id)
+    {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getName()
+    {
+        return this.name;
     }
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
-    public char getSex() {
-        return sex;
+    public char getSex()
+    {
+        return this.sex;
     }
 
-    public void setSex(char sex) {
+    public void setSex(char sex)
+    {
         this.sex = sex;
     }
 
-    public Date getDateNasc() {
-        return dateNasc;
+    public Date getDateNasc()
+    {
+        return this.dateNasc;
     }
 
-    public void setDateNasc(Date dateNasc) {
+    public void setDateNasc(Date dateNasc)
+    {
         this.dateNasc = dateNasc;
     }
 
-    public String getNacionality() {
-        return nacionality;
+    public String getNacionality()
+    {
+        return this.nacionality;
     }
 
-    public void setNacionality(String nacionality) {
+    public void setNacionality(String nacionality)
+    {
         this.nacionality = nacionality;
     }
 

@@ -3,16 +3,18 @@ package view;
 import javax.swing.*;
 
 /**
- * @author cassiano
+ *
  */
-public class HomeView extends JFrame {
+public class HomeView extends JFrame
+{
 
     private final DefaultListModel model;
 
-    public HomeView() {
-        initComponents();
-        
+    public HomeView()
+    {
+        this.initComponents();
         this.model = new DefaultListModel();
+
         super.setVisible(true);
         super.setLocationRelativeTo(null);
     }
@@ -167,58 +169,74 @@ public class HomeView extends JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public DefaultListModel getModel() {
-        return model;
+    public DefaultListModel getModel()
+    {
+        return this.model;
     }
 
-    public JButton getButtonNewNumber() {
-        return buttonNewNumber;
+    public JButton getButtonNewNumber()
+    {
+        return this.buttonNewNumber;
     }
 
-    public JComboBox getComboBox() {
-        return comboBox;
+    public JComboBox getComboBox()
+    {
+        return this.comboBox;
     }
 
-    public JTextField getFieldDate() {
-        return fieldDate;
+    public JTextField getFieldDate()
+    {
+        return this.fieldDate;
     }
 
-    public JTextField getFieldNacionality() {
-        return fieldNacionality;
+    public JTextField getFieldNacionality()
+    {
+        return this.fieldNacionality;
     }
 
-    public JList getNumberList() {
-        return numberList;
+    public JList getNumberList()
+    {
+        return this.numberList;
     }
 
-    public JRadioButton getRadioFemale() {
-        return radioFemale;
+    public JRadioButton getRadioFemale()
+    {
+        return this.radioFemale;
     }
 
-    public JRadioButton getRadioMale() {
-        return radioMale;
+    public JRadioButton getRadioMale()
+    {
+        return this.radioMale;
     }
 
     /* Set the Nimbus look and feel */
     //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
     /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
      */
-    private void foo() {
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+    private void foo()
+    {
+        try
+        {
+            for ( javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels() )
+            {
+                if ( "Nimbus".equals(info.getName()) )
+                {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException ex)
+        {
             java.util.logging.Logger.getLogger(HomeView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
+        } catch (InstantiationException ex)
+        {
             java.util.logging.Logger.getLogger(HomeView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
+        } catch (IllegalAccessException ex)
+        {
             java.util.logging.Logger.getLogger(HomeView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex)
+        {
             java.util.logging.Logger.getLogger(HomeView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
     }

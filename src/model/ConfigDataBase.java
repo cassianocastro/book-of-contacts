@@ -3,12 +3,17 @@ package model;
 import java.io.Serializable;
 import org.json.JSONObject;
 
-public final class ConfigDataBase implements Serializable {
+/**
+ *
+ */
+final public class ConfigDataBase implements Serializable
+{
 
     private final String host, port, dbName, dataBase, userName, password;
 
     public ConfigDataBase(String host, String port, String dbName,
-            String dataBase, String userName, String password) {
+            String dataBase, String userName, String password)
+    {
         this.host     = host;
         this.port     = port;
         this.dbName   = dbName;
@@ -16,8 +21,9 @@ public final class ConfigDataBase implements Serializable {
         this.userName = userName;
         this.password = password;
     }
-    
-    public ConfigDataBase(JSONObject json){
+
+    public ConfigDataBase(JSONObject json)
+    {
         this.host     = json.getString("host");
         this.port     = json.getString("port");
         this.dbName   = json.getString("dbName");
@@ -25,46 +31,56 @@ public final class ConfigDataBase implements Serializable {
         this.userName = json.getString("userName");
         this.password = json.getString("password");
     }
-    
-    public JSONObject toJSON(){
+
+    public JSONObject toJSON()
+    {
         JSONObject json = new JSONObject();
+
         json.put("host",     this.host);
         json.put("port",     this.port);
         json.put("dbName",   this.dbName);
         json.put("dataBase", this.dataBase);
         json.put("userName", this.userName);
         json.put("password", this.password);
+
         return json;
     }
 
-    public String getHost() {
+    public String getHost()
+    {
         return this.host;
     }
 
-    public String getPort() {
+    public String getPort()
+    {
         return this.port;
     }
-    
-    public String getDBname(){
+
+    public String getDBname()
+    {
         return this.dbName;
     }
 
-    public String getDataBase() {
+    public String getDataBase()
+    {
         return this.dataBase;
     }
 
-    public String getUser() {
+    public String getUser()
+    {
         return this.userName;
     }
 
-    public String getPassword() {
+    public String getPassword()
+    {
         return this.password;
     }
-    
-    public String getURL(){
+
+    public String getURL()
+    {
         return "jdbc:"  + this.dbName
-                + "://" + this.host 
-                + ":"   + this.port 
+                + "://" + this.host
+                + ":"   + this.port
                 + "/"   + this.dataBase;
     }
 

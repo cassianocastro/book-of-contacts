@@ -3,13 +3,15 @@ package view;
 import javax.swing.*;
 
 /**
- * @author cassiano
+ *
  */
-public class ConfigView extends JFrame {
+public class ConfigView extends JFrame
+{
 
-    public ConfigView() {
-        initComponents();
-        
+    public ConfigView()
+    {
+        this.initComponents();
+
         super.setLocationRelativeTo(null);
         super.setVisible(true);
     }
@@ -140,36 +142,44 @@ public class ConfigView extends JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_fieldUserActionPerformed
 
-    public JButton getButtonCancel() {
-        return buttonCancel;
+    public JButton getButtonCancel()
+    {
+        return this.buttonCancel;
     }
 
-    public JButton getButtonSave() {
-        return buttonSave;
-    }
-    
-    public JTextField getFieldDBName(){
-        return fieldDBName;
-    }
-    
-    public JTextField getFieldBankName() {
-        return fieldBankName;
+    public JButton getButtonSave()
+    {
+        return this.buttonSave;
     }
 
-    public JTextField getFieldDoor() {
-        return fieldDoor;
+    public JTextField getFieldDBName()
+    {
+        return this.fieldDBName;
     }
 
-    public JPasswordField getFieldPassword() {
-        return fieldPassword;
+    public JTextField getFieldBankName()
+    {
+        return this.fieldBankName;
     }
 
-    public JTextField getFieldServer() {
-        return fieldServer;
+    public JTextField getFieldDoor()
+    {
+        return this.fieldDoor;
     }
 
-    public JTextField getFieldUser() {
-        return fieldUser;
+    public JPasswordField getFieldPassword()
+    {
+        return this.fieldPassword;
+    }
+
+    public JTextField getFieldServer()
+    {
+        return this.fieldServer;
+    }
+
+    public JTextField getFieldUser()
+    {
+        return this.fieldUser;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

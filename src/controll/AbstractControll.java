@@ -7,8 +7,8 @@ package controll;
 
 /**
  *
- * @author cassiano
  */
-public class AbstractControll {
-    
+public class AbstractControll
+{
+
 }

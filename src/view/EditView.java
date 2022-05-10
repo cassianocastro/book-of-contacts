@@ -4,46 +4,56 @@ import javax.swing.*;
 import org.json.JSONObject;
 
 /**
- * @author cassiano
+ *
  */
-public class EditView extends JFrame {
+public class EditView extends JFrame
+{
 
-    public EditView() {
-        initComponents();
-        
+    public EditView()
+    {
+        this.initComponents();
+
         super.setLocationRelativeTo(null);
         super.setVisible(true);
     }
 
-    public JButton getCancel() {
-        return buttonCancel;
+    public JButton getCancel()
+    {
+        return this.buttonCancel;
     }
 
-    public JButton getSave() {
-        return buttonSave;
+    public JButton getSave()
+    {
+        return this.buttonSave;
     }
 
-    public JRadioButton getRadioFemale() {
-        return radioFemale;
+    public JRadioButton getRadioFemale()
+    {
+        return this.radioFemale;
     }
 
-    public JRadioButton getRadioMale() {
-        return radioMale;
+    public JRadioButton getRadioMale()
+    {
+        return this.radioMale;
     }
 
-    public JTextField getFieldName() {
-        return fieldName;
+    public JTextField getFieldName()
+    {
+        return this.fieldName;
     }
 
-    public JTextField getFieldDate() {
-        return fieldDate;
+    public JTextField getFieldDate()
+    {
+        return this.fieldDate;
     }
 
-    public JTextField getNacionality() {
-        return fieldNacionality;
+    public JTextField getNacionality()
+    {
+        return this.fieldNacionality;
     }
-    
-    public JSONObject getTranferObject(){
+
+    public JSONObject getTranferObject()
+    {
         JSONObject json = new JSONObject();
         //json.put("", json)
         return json;

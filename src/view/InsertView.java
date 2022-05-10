@@ -3,40 +3,48 @@ package view;
 import javax.swing.*;
 
 /**
- * @author cassiano
+ *
  */
-public class InsertView extends JFrame {
+public class InsertView extends JFrame
+{
 
-    public InsertView() {
-        initComponents();
-        
+    public InsertView()
+    {
+        this.initComponents();
         this.radioFemale.setSelected(true);
+
         super.setLocationRelativeTo(rootPane);
         super.setVisible(true);
     }
 
-    public JButton getButtonCancel() {
-        return buttonCancel;
+    public JButton getButtonCancel()
+    {
+        return this.buttonCancel;
     }
 
-    public JButton getButtonOkay() {
-        return buttonOkay;
+    public JButton getButtonOkay()
+    {
+        return this.buttonOkay;
     }
 
-    public JTextField getFieldDate() {
-        return fieldDate;
+    public JTextField getFieldDate()
+    {
+        return this.fieldDate;
     }
 
-    public JTextField getFieldNacionality() {
-        return fieldNacionality;
+    public JTextField getFieldNacionality()
+    {
+        return this.fieldNacionality;
     }
 
-    public JTextField getFieldName() {
-        return fieldName;
+    public JTextField getFieldName()
+    {
+        return this.fieldName;
     }
 
-    public JRadioButton getRadioFemale() {
-        return radioFemale;
+    public JRadioButton getRadioFemale()
+    {
+        return this.radioFemale;
     }
 
     /**

@@ -13,55 +13,64 @@ import view.*;
 
 /**
  *
- * @author cassiano
  */
-public class InsertControll {
+public class InsertControll
+{
 
-    private JTextField fieldName, fieldDate, fieldNacionality;
-    private JRadioButton radioF;
-    private InsertView insertView;
-    private JButton buttonOkay, buttonCancel;
-    private PersonDAO personDAO;
+    private final JTextField fieldName, fieldDate, fieldNacionality;
+    private final JRadioButton radioF;
+    private final InsertView insertView;
+    private final JButton buttonOkay, buttonCancel;
+    private final PersonDAO personDAO;
 
-    public InsertControll(Connection connection){
+    public InsertControll(Connection connection)
+    {
         this.insertView       = new InsertView();
+
         this.fieldName        = this.insertView.getFieldName();
         this.fieldDate        = this.insertView.getFieldDate();
         this.fieldNacionality = this.insertView.getFieldNacionality();
         this.radioF           = this.insertView.getRadioFemale();
         this.buttonOkay       = this.insertView.getButtonOkay();
         this.buttonCancel     = this.insertView.getButtonCancel();
-        
+
         this.personDAO = new PersonDAO(connection);
 
-        addButtonListeners();
+        this.addButtonListeners();
     }
-    
-    private void addButtonListeners(){
-        this.buttonCancel.addActionListener(new ActionListener() {
+
+    private void addButtonListeners()
+    {
+        this.buttonCancel.addActionListener(new ActionListener()
+        {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e)
+            {
                 insertView.dispose();
             }
         });
-        
-        this.buttonOkay.addActionListener(new ActionListener() {
+
+        this.buttonOkay.addActionListener(new ActionListener()
+        {
             @Override
-            public void actionPerformed(ActionEvent evt) {
-                if ( ! fieldName.getText().isEmpty() && ! fieldDate.getText().isEmpty()) {
-                    try {
+            public void actionPerformed(ActionEvent evt)
+            {
+                if ( ! fieldName.getText().isEmpty() && ! fieldDate.getText().isEmpty())
+                {
+                    try
+                    {
                         String name        = fieldName.getText();
                         String nacionality = fieldNacionality.getText();
                         char sex           = (radioF.isSelected()) ? 'F' : 'M';
                         Date date          = new SimpleDateFormat("dd/MM/yyyy").parse(fieldDate.getText());
                         personDAO.create(new Contact(0, name, sex, date, nacionality));
                         JOptionPane.showMessageDialog(insertView, "Cadastro realizado.");
-                        
-                    } catch (SQLException | ParseException e) {
+                    } catch (SQLException | ParseException e)
+                    {
                         JOptionPane.showMessageDialog(insertView, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                     }
                     insertView.dispose();
-                }else 
+                } else
                     JOptionPane.showMessageDialog(insertView, "Preencha todos os campos.", "Alert", JOptionPane.INFORMATION_MESSAGE);
             }
         });
