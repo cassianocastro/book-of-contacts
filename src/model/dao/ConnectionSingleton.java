@@ -9,7 +9,7 @@ import java.sql.*;
 public class ConnectionSingleton
 {
 
-    private static Connection connection;
+    static private Connection connection;
 
     private ConnectionSingleton() {}
 
@@ -23,6 +23,7 @@ public class ConnectionSingleton
                 config.getPassword()
             );
         }
+
         return connection;
     }
 }
