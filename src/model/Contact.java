@@ -71,5 +71,4 @@ public class Contact
     {
         this.nacionality = nacionality;
     }
-
 }

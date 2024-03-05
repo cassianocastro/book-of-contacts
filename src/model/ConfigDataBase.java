@@ -83,5 +83,4 @@ final public class ConfigDataBase implements Serializable
                 + ":"   + this.port
                 + "/"   + this.dataBase;
     }
-
 }
