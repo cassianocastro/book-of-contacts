@@ -41,38 +41,30 @@ public class InsertControll
 
     private void addButtonListeners()
     {
-        this.buttonCancel.addActionListener(new ActionListener()
+        this.buttonCancel.addActionListener((ActionEvent e) ->
         {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-                insertView.dispose();
-            }
+            insertView.dispose();
         });
 
-        this.buttonOkay.addActionListener(new ActionListener()
+        this.buttonOkay.addActionListener((ActionEvent evt) ->
         {
-            @Override
-            public void actionPerformed(ActionEvent evt)
+            if ( ! fieldName.getText().isEmpty() && ! fieldDate.getText().isEmpty())
             {
-                if ( ! fieldName.getText().isEmpty() && ! fieldDate.getText().isEmpty())
+                try
                 {
-                    try
-                    {
-                        String name        = fieldName.getText();
-                        String nacionality = fieldNacionality.getText();
-                        char sex           = (radioF.isSelected()) ? 'F' : 'M';
-                        Date date          = new SimpleDateFormat("dd/MM/yyyy").parse(fieldDate.getText());
-                        personDAO.create(new Contact(0, name, sex, date, nacionality));
-                        JOptionPane.showMessageDialog(insertView, "Cadastro realizado.");
-                    } catch (SQLException | ParseException e)
-                    {
-                        JOptionPane.showMessageDialog(insertView, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-                    }
-                    insertView.dispose();
-                } else
-                    JOptionPane.showMessageDialog(insertView, "Preencha todos os campos.", "Alert", JOptionPane.INFORMATION_MESSAGE);
-            }
+                    String name        = fieldName.getText();
+                    String nacionality = fieldNacionality.getText();
+                    char sex           = (radioF.isSelected()) ? 'F' : 'M';
+                    Date date          = new SimpleDateFormat("dd/MM/yyyy").parse(fieldDate.getText());
+                    personDAO.create(new Contact(0, name, sex, date, nacionality));
+                    JOptionPane.showMessageDialog(insertView, "Cadastro realizado.");
+                } catch (SQLException | ParseException e)
+                {
+                    JOptionPane.showMessageDialog(insertView, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                insertView.dispose();
+            } else
+                JOptionPane.showMessageDialog(insertView, "Preencha todos os campos.", "Alert", JOptionPane.INFORMATION_MESSAGE);
         });
     }
 }
