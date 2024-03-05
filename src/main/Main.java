@@ -1,8 +1,8 @@
 package main;
 
-import controller.HomeControll;
-import model.dao.ConnectionSingleton;
 import java.sql.*;
+import controller.HomeController;
+import model.dao.ConnectionSingleton;
 import model.ConfigDataBase;
 
 /**
@@ -20,7 +20,8 @@ public class Main
         {
             ConfigDataBase config = new ConfigDataBase("localhost", "3306", "mysql", "agenda", "root", "");
             Connection connection = ConnectionSingleton.getInstance(config);
-            HomeControll c        = new HomeControll(connection);
+
+			new HomeController(connection);
         }
 		catch ( SQLException e )
         {
