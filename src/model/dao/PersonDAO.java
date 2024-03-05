@@ -95,12 +95,11 @@ public class PersonDAO
     public void delete(int id) throws SQLException
     {
         String SQL = "DELETE FROM pessoas WHERE ID_Pessoa = ?";
-        
+
         try (PreparedStatement ps = this.connection.prepareStatement(SQL))
         {
             ps.setInt(1, id);
             ps.executeUpdate();
         }
     }
-
 }

@@ -108,11 +108,10 @@ public class PhoneDAO
                 int id       = rs.getInt("ID_contato");
                 int personID = rs.getInt("ID_Pessoa");
                 String phone = rs.getString("Fone");
-                
+
                 return new Phone(id, phone, personID);
             }
             return null;
         }
     }
-
 }
