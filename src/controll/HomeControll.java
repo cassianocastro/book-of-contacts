@@ -7,10 +7,8 @@ import java.util.List;
 import javax.swing.*;
 import model.*;
 import model.dao.*;
-import view.ConfigView;
-import view.EditView;
 import view.HomeView;
-import view.InsertView;
+
 
 /**
  *
@@ -18,16 +16,16 @@ import view.InsertView;
 public class HomeControll
 {
 
-    private JComboBox comboBox;
-    private JButton buttonNewNumber;
-    private JList numberList;
-    private DefaultListModel listModel;
-    private JTextField fieldDate, fieldNacionality;
-    private JRadioButton radioF, radioM;
-    private HomeView home;
+    private final JComboBox comboBox;
+    private final JButton buttonNewNumber;
+    private final JList numberList;
+    private final DefaultListModel listModel;
+    private final JTextField fieldDate, fieldNacionality;
+    private final JRadioButton radioF, radioM;
+    private final HomeView home;
 
-    private PersonDAO personDAO;
-    private PhoneDAO phoneDAO;
+    private final PersonDAO personDAO;
+    private final PhoneDAO phoneDAO;
 
     public HomeControll(Connection connection)
     {
@@ -100,59 +98,51 @@ public class HomeControll
 
     private void addButtonListeners()
     {
-        this.buttonNewNumber.addActionListener(new ActionListener()
+        this.buttonNewNumber.addActionListener((ActionEvent evt) ->
         {
-            @Override
-            public void actionPerformed(ActionEvent evt)
+            int index = comboBox.getSelectedIndex();
+            String phone = JOptionPane.showInputDialog(null, "Novo Número", "Novo");
+
+            try
             {
-                int index = comboBox.getSelectedIndex();
-                String phone = JOptionPane.showInputDialog(null, "Novo Número", "Novo");
+                List<Contact> people = personDAO.read();
+                Contact person = people.get(index);
+                phoneDAO.create(new Phone(0, phone, person.getID()));
+            } catch (SQLException e)
+            {
 
-                try
-                {
-                    List<Contact> people = personDAO.read();
-                    Contact person = people.get(index);
-                    phoneDAO.create(new Phone(0, phone, person.getID()));
-                } catch (SQLException e)
-                {
-
-                }
-                loadNumberList();
             }
+            loadNumberList();
         });
     }
 
     private void addComboListeners()
     {
-        this.comboBox.addItemListener(new ItemListener()
+        this.comboBox.addItemListener((ItemEvent evt) ->
         {
-            @Override
-            public void itemStateChanged(ItemEvent evt)
+            int index = comboBox.getSelectedIndex();
+            if ( index != -1 )
             {
-                int index = comboBox.getSelectedIndex();
-                if ( index != -1 )
+                try
                 {
-                    try
+                    List<Contact> people = personDAO.read();
+                    Contact person = people.get(index);
+                    if ( person.getSex() == 'F' )
                     {
-                        List<Contact> people = personDAO.read();
-                        Contact person = people.get(index);
-                        if ( person.getSex() == 'F' )
-                        {
-                            radioF.setSelected(true);
-                        } else
-                        {
-                            radioM.setSelected(true);
-                        }
-
-                        fieldDate.setText(
-                            new SimpleDateFormat("dd/MM/yyyy").format(person.getDateNasc())
-                        );
-                        fieldNacionality.setText(person.getNacionality());
-                        loadNumberList();
-                    } catch (SQLException e)
+                        radioF.setSelected(true);
+                    } else
                     {
-
+                        radioM.setSelected(true);
                     }
+
+                    fieldDate.setText(
+                        new SimpleDateFormat("dd/MM/yyyy").format(person.getDateNasc())
+                    );
+                    fieldNacionality.setText(person.getNacionality());
+                    loadNumberList();
+                } catch (SQLException e)
+                {
+
                 }
             }
         });
