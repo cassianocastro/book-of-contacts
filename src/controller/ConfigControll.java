@@ -10,7 +10,7 @@ import view.ConfigView;
 /**
  *
  */
-public class ConfigControll
+public class ConfigController
 {
 
     private final JTextField fieldServer, fieldUser, fieldDB, fieldDoor;
@@ -18,7 +18,7 @@ public class ConfigControll
     private final JButton buttonSave, buttonCancel;
     private final ConfigView configView;
 
-    public ConfigControll()
+    public ConfigController()
     {
         this.configView   = new ConfigView();
 

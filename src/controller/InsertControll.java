@@ -14,7 +14,7 @@ import view.*;
 /**
  *
  */
-public class InsertControll
+public class InsertController
 {
 
     private final JTextField fieldName, fieldDate, fieldNacionality;
@@ -23,7 +23,7 @@ public class InsertControll
     private final JButton buttonOkay, buttonCancel;
     private final PersonDAO personDAO;
 
-    public InsertControll(Connection connection)
+    public InsertController(Connection connection)
     {
         this.insertView       = new InsertView();
 

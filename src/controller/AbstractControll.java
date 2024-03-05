@@ -3,7 +3,7 @@ package controller;
 /**
  *
  */
-public class AbstractControll
+public class AbstractController
 {
 
 }

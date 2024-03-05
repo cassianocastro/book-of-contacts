@@ -9,7 +9,7 @@ import model.dao.PersonDAO;
 /**
  *
  */
-public class EditControll
+public class EditController
 {
 
     private void OKMouseClicked(java.awt.event.MouseEvent evt)

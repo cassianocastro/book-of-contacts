@@ -13,7 +13,7 @@ import view.HomeView;
 /**
  *
  */
-public class HomeControll
+public class HomeController
 {
 
     private final JComboBox comboBox;
@@ -27,7 +27,7 @@ public class HomeControll
     private final PersonDAO personDAO;
     private final PhoneDAO phoneDAO;
 
-    public HomeControll(Connection connection)
+    public HomeController(Connection connection)
     {
         this.home             = new HomeView();
 
