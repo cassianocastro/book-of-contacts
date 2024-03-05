@@ -22,9 +22,10 @@ public class PhoneDAO
         List list  = new ArrayList();
         String SQL = "SELECT * FROM telefone";
 
-        try (PreparedStatement ps = this.connection.prepareStatement(SQL))
+        try ( PreparedStatement ps = this.connection.prepareStatement(SQL) )
         {
             ResultSet rs = ps.executeQuery();
+
             while ( rs.next() )
             {
                 int id       = rs.getInt("ID_contato");
@@ -34,6 +35,7 @@ public class PhoneDAO
                 list.add(new Phone(id, phone, personID));
             }
         }
+
         return list;
     }
 
@@ -42,9 +44,10 @@ public class PhoneDAO
         List list  = new ArrayList();
         String SQL = "SELECT * FROM telefones WHERE ID_Pessoa = ?";
 
-        try (PreparedStatement ps = this.connection.prepareStatement(SQL))
+        try ( PreparedStatement ps = this.connection.prepareStatement(SQL) )
         {
             ps.setInt(1, codigo);
+
             ResultSet rs = ps.executeQuery();
 
             while ( rs.next() )
@@ -56,6 +59,7 @@ public class PhoneDAO
                 list.add(new Phone(id, phone, personID));
             }
         }
+
         return list;
     }
 
@@ -63,10 +67,11 @@ public class PhoneDAO
     {
         String SQL = "INSERT INTO telefones (Fone, ID_Pessoa) VALUES (?, ?)";
 
-        try (PreparedStatement ps = this.connection.prepareStatement(SQL))
+        try ( PreparedStatement ps = this.connection.prepareStatement(SQL) )
         {
             ps.setString(1, phone.getPhone());
             ps.setInt(2, phone.getPersonID());
+
             ps.executeUpdate();
         }
     }
@@ -75,10 +80,11 @@ public class PhoneDAO
     {
         String SQL = "UPDATE telefones set Fone = ? WHERE ID_Contato = ?";
 
-        try (PreparedStatement ps = this.connection.prepareStatement(SQL))
+        try ( PreparedStatement ps = this.connection.prepareStatement(SQL) )
         {
             ps.setString(1, phone.getPhone());
             ps.setInt(2, phone.getId());
+
             ps.executeUpdate();
         }
     }
@@ -87,9 +93,10 @@ public class PhoneDAO
     {
         String SQL = "DELETE FROM telefones WHERE ID_contato = ?";
 
-        try (PreparedStatement ps = this.connection.prepareStatement(SQL))
+        try ( PreparedStatement ps = this.connection.prepareStatement(SQL) )
         {
             ps.setInt(1, id);
+
             ps.executeUpdate();
         }
     }
@@ -98,9 +105,10 @@ public class PhoneDAO
     {
         String SQL = "SELECT * FROM telefones WHERE ID_contato = ?";
 
-        try (PreparedStatement ps = this.connection.prepareStatement(SQL))
+        try ( PreparedStatement ps = this.connection.prepareStatement(SQL) )
         {
             ps.setInt(1, index);
+
             ResultSet rs = ps.executeQuery();
 
             while ( rs.next() )
@@ -111,6 +119,7 @@ public class PhoneDAO
 
                 return new Phone(id, phone, personID);
             }
+
             return null;
         }
     }
