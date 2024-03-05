@@ -45,19 +45,23 @@ public class ConfigControll
         {
             ConfigDataBase config = new ConfigDataBase(
                 fieldServer.getText(),
-                fieldDoor  .getText(),
-                fieldDB    .getText(),
-                fieldUser  .getText(),
+                fieldDoor.getText(),
+                fieldDB.getText(),
+                fieldUser.getText(),
                 String.valueOf(fieldPass.getPassword())
             );
+
             try
             {
                 new FileManager().write(config);
+
                 JOptionPane.showMessageDialog(configView, "Alterações gravadas.");
-            } catch (IOException e)
+            }
+			catch ( IOException e )
             {
                 JOptionPane.showMessageDialog(configView, e.getMessage());
             }
+
             configView.dispose();
         });
     }
@@ -69,11 +73,12 @@ public class ConfigControll
             ConfigDataBase config = (ConfigDataBase) new FileManager().read();
 
             fieldServer.setText(config.getHost());
-            fieldDoor  .setText(config.getPort());
-            fieldDB    .setText(config.getDataBase());
-            fieldUser  .setText(config.getUser());
-            fieldPass  .setText(config.getPassword());
-        } catch(IOException e)
+            fieldDoor.setText(config.getPort());
+            fieldDB.setText(config.getDataBase());
+            fieldUser.setText(config.getUser());
+            fieldPass.setText(config.getPassword());
+        }
+		catch ( IOException e )
         {
 
         }
