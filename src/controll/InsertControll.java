@@ -56,15 +56,22 @@ public class InsertControll
                     String nacionality = fieldNacionality.getText();
                     char sex           = (radioF.isSelected()) ? 'F' : 'M';
                     Date date          = new SimpleDateFormat("dd/MM/yyyy").parse(fieldDate.getText());
-                    personDAO.create(new Contact(0, name, sex, date, nacionality));
-                    JOptionPane.showMessageDialog(insertView, "Cadastro realizado.");
-                } catch (SQLException | ParseException e)
+
+					personDAO.create(new Contact(0, name, sex, date, nacionality));
+
+					JOptionPane.showMessageDialog(insertView, "Cadastro realizado.");
+                }
+				catch ( SQLException | ParseException e )
                 {
                     JOptionPane.showMessageDialog(insertView, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
+
                 insertView.dispose();
-            } else
+            }
+			else
+			{
                 JOptionPane.showMessageDialog(insertView, "Preencha todos os campos.", "Alert", JOptionPane.INFORMATION_MESSAGE);
+			}
         });
     }
 }

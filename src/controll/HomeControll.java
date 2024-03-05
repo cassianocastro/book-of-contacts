@@ -61,11 +61,13 @@ public class HomeControll
         try
         {
             List<Contact> people = personDAO.read();
-            for ( Contact person : people )
+
+			for ( Contact person : people )
             {
                 this.comboBox.addItem(person.getName());
             }
-        } catch (SQLException e)
+        }
+		catch ( SQLException e )
         {
 
         }
@@ -74,7 +76,8 @@ public class HomeControll
     private void loadNumberList()
     {
         this.numberList.removeAll();
-        int index = this.comboBox.getSelectedIndex();
+
+		int index = this.comboBox.getSelectedIndex();
 
         if ( index != -1 )
         {
@@ -83,13 +86,17 @@ public class HomeControll
                 List<Contact> people = personDAO.read();
                 Contact person = people.get(index);
                 List<Phone> phones = phoneDAO.findByID(person.getID());
-                this.listModel.clear();
+
+		        this.listModel.clear();
+
                 for ( Phone phone : phones )
                 {
                     this.listModel.addElement(phone.getPhone());
                 }
+
                 this.numberList.setModel(this.listModel);
-            } catch (SQLException e)
+            }
+			catch ( SQLException e )
             {
 
             }
@@ -107,11 +114,14 @@ public class HomeControll
             {
                 List<Contact> people = personDAO.read();
                 Contact person = people.get(index);
+
                 phoneDAO.create(new Phone(0, phone, person.getID()));
-            } catch (SQLException e)
+            }
+			catch ( SQLException e )
             {
 
             }
+
             loadNumberList();
         });
     }
@@ -121,16 +131,19 @@ public class HomeControll
         this.comboBox.addItemListener((ItemEvent evt) ->
         {
             int index = comboBox.getSelectedIndex();
-            if ( index != -1 )
+
+			if ( index != -1 )
             {
                 try
                 {
                     List<Contact> people = personDAO.read();
                     Contact person = people.get(index);
+
                     if ( person.getSex() == 'F' )
                     {
                         radioF.setSelected(true);
-                    } else
+                    }
+					else
                     {
                         radioM.setSelected(true);
                     }
@@ -138,9 +151,12 @@ public class HomeControll
                     fieldDate.setText(
                         new SimpleDateFormat("dd/MM/yyyy").format(person.getDateNasc())
                     );
-                    fieldNacionality.setText(person.getNacionality());
-                    loadNumberList();
-                } catch (SQLException e)
+
+					fieldNacionality.setText(person.getNacionality());
+
+					loadNumberList();
+                }
+				catch ( SQLException e )
                 {
 
                 }
@@ -150,68 +166,74 @@ public class HomeControll
 
     private void addNumberListListener()
     {
-        this.numberList.addMouseListener(new MouseListener()
-        {
-            @Override
-            public void mouseClicked(MouseEvent evt)
-            {
-                int personID = comboBox.getSelectedIndex();
-                int index = numberList.getSelectedIndex();
+        this.numberList.addMouseListener(
+			new MouseListener()
+			{
+				@Override
+				public void mouseClicked(MouseEvent evt)
+				{
+					int personID = comboBox.getSelectedIndex();
+					int index = numberList.getSelectedIndex();
 
-                if ( index != -1 )
-                {
-                    try
-                    {
-                        List<Contact> people = personDAO.read();
-                        Contact person = people.get(personID);
-                        List<Phone> phones = phoneDAO.findByID(person.getID());
+					if ( index != -1 )
+					{
+						try
+						{
+							List<Contact> people = personDAO.read();
+							Contact person = people.get(personID);
+							List<Phone> phones = phoneDAO.findByID(person.getID());
 
-                        if ( evt.getButton() == MouseEvent.BUTTON3 )
-                        {
-                            int confirm = JOptionPane.showConfirmDialog(null, "Excluir o Telefone?", "Confirmação", 0);
+							if ( evt.getButton() == MouseEvent.BUTTON3 )
+							{
+								int confirm = JOptionPane.showConfirmDialog(null, "Excluir o Telefone?", "Confirmação", 0);
 
-                            if ( confirm == JOptionPane.YES_OPTION )
-                            {
-                                phoneDAO.delete(phones.get(index).getId());
-                                loadNumberList();
-                            }
-                        } else if ( evt.getClickCount() == 2 )
-                        {
-                            String newPhone = JOptionPane.showInputDialog(null, "Novo telefone:");
-                            phoneDAO.update(new Phone(phones.get(index).getId(), newPhone, 0));
-                            loadNumberList();
-                        }
-                    } catch (SQLException e)
-                    {
+								if ( confirm == JOptionPane.YES_OPTION )
+								{
+									phoneDAO.delete(phones.get(index).getId());
+									loadNumberList();
+								}
+							}
+							else if ( evt.getClickCount() == 2 )
+							{
+								String newPhone = JOptionPane.showInputDialog(null, "Novo telefone:");
 
-                    }
-                }
-            }
+								phoneDAO.update(new Phone(phones.get(index).getId(), newPhone, 0));
 
-            @Override
-            public void mousePressed(MouseEvent e)
-            {
+								loadNumberList();
+							}
+						}
+						catch ( SQLException e )
+						{
 
-            }
+						}
+					}
+				}
 
-            @Override
-            public void mouseReleased(MouseEvent e)
-            {
+				@Override
+				public void mousePressed(MouseEvent e)
+				{
 
-            }
+				}
 
-            @Override
-            public void mouseEntered(MouseEvent e)
-            {
+				@Override
+				public void mouseReleased(MouseEvent e)
+				{
 
-            }
+				}
 
-            @Override
-            public void mouseExited(MouseEvent e)
-            {
+				@Override
+				public void mouseEntered(MouseEvent e)
+				{
 
-            }
-        });
+				}
+
+				@Override
+				public void mouseExited(MouseEvent e)
+				{
+
+				}
+			}
+		);
     }
 
 //    private void jMenuItemNewActionPerformed(java.awt.event.ActionEvent evt)
