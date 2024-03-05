@@ -1,6 +1,6 @@
 package main;
 
-import controll.HomeControll;
+import controller.HomeControll;
 import model.dao.ConnectionSingleton;
 import java.sql.*;
 import model.ConfigDataBase;
