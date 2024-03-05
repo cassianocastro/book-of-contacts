@@ -15,21 +15,27 @@ public class EditControll
     private void OKMouseClicked(java.awt.event.MouseEvent evt)
     {
 
-        if ( ! T1.getText().isEmpty() && !T3.getText().isEmpty() )
+        if ( ! T1.getText().isEmpty() && ! T3.getText().isEmpty() )
         {
             String name = T1.getText();
             char sex = ( RBF.isSelected() ) ? 'F' : 'M';
+
             try
             {
                 Date date = new SimpleDateFormat("dd/MM/yyyy").parse(T3.getText());
+
                 new PersonDAO().update(new Person(0, name, sex, date, null));
-                JOptionPane.showMessageDialog(rootPane, "Atualização realizada.");
-                dispose();
-            } catch (SQLException | ParseException e)
+
+				JOptionPane.showMessageDialog(rootPane, "Atualização realizada.");
+
+				dispose();
+            }
+			catch ( SQLException | ParseException e )
             {
                 System.out.println("problema na inserção do contato");
             }
-        } else
+        }
+		else
         {
             JOptionPane.showMessageDialog(rootPane, "Preencha todos os campos.");
         }
@@ -54,9 +60,10 @@ public class EditControll
                 RBM.setSelected(true);
 
             Date date = P.getDataNasc();
-            String strDate = new SimpleDateFormat("dd/MM/yyyy").format(date);
-            T3.setText(strDate);
-        } catch (SQLException e)
+
+            T3.setText(new SimpleDateFormat("dd/MM/yyyy").format(date));
+        }
+		catch ( SQLException e )
         {
             System.out.println("Contato não encontrado.");
         }
