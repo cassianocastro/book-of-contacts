@@ -1,2 +1,8 @@
-src/org/json
-lib/MYSQL
+nbproject/
+build/
+lib/
+
+src/org/
+src/lib/
+
+build.xml
