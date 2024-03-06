@@ -12,7 +12,7 @@ public class ConfigDataBaseDAO
     public void write(JSONObject json) throws IOException
     {
         new ObjectOutputStream(
-            new FileOutputStream("src/lib/config.json")
+            new FileOutputStream("lib/config.json")
         )
 		.writeObject(json);
     }
@@ -20,7 +20,7 @@ public class ConfigDataBaseDAO
     public JSONObject read() throws IOException, ClassNotFoundException
     {
         return (JSONObject) new ObjectInputStream(
-            new FileInputStream("src/lib/config.json")
+            new FileInputStream("lib/config.json")
         )
 		.readObject();
     }
