@@ -8,28 +8,17 @@ import java.util.Date;
 public class Contact
 {
 
-    private int id;
-    private String name, nacionality;
+    private String name;
+    private String nacionality;
     private char sex;
     private Date birthdate;
 
-    public Contact(int id, String name, char sex, Date birthdate, String nacionality)
+    public Contact(String name, char sex, Date birthdate, String nacionality)
     {
-        this.id          = id;
         this.name        = name;
         this.sex         = sex;
         this.birthdate   = birthdate;
         this.nacionality = nacionality;
-    }
-
-    public int getID()
-    {
-        return this.id;
-    }
-
-    public void setID(int id)
-    {
-        this.id = id;
     }
 
     public String getName()
