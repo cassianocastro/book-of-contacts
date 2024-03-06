@@ -69,8 +69,9 @@ public class PhoneDAO
 
         try ( PreparedStatement ps = this.connection.prepareStatement(SQL) )
         {
-            ps.setString(1, phone.getPhone());
-            ps.setInt(2, phone.getPersonID());
+            ps.setInt(1, phone.getDDD());
+            ps.setString(2, phone.getNumber());
+            ps.setInt(3, phone.getPersonID());
 
             ps.executeUpdate();
         }
@@ -82,8 +83,8 @@ public class PhoneDAO
 
         try ( PreparedStatement ps = this.connection.prepareStatement(SQL) )
         {
-            ps.setString(1, phone.getPhone());
-            ps.setInt(2, phone.getId());
+            ps.setInt(1, phone.getDDD());
+            ps.setString(2, phone.getNumber());
 
             ps.executeUpdate();
         }
