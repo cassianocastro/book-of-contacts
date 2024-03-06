@@ -19,8 +19,8 @@ public class PhoneDAO
 
     public List read() throws SQLException
     {
-        List list  = new ArrayList();
-        final String SQL = "SELECT * FROM telefone";
+        List list = new ArrayList();
+        final String SQL = "SELECT ddd, number, personID FROM phone";
 
         try ( var ps = this.connection.prepareStatement(SQL) )
         {
@@ -28,11 +28,11 @@ public class PhoneDAO
 
             while ( rs.next() )
             {
-                int id       = rs.getInt("ID_contato");
-                int personID = rs.getInt("ID_Pessoa");
-                String phone = rs.getString("Fone");
+                int ddd       = rs.getInt("ddd");
+                String number = rs.getString("number");
+                int personID  = rs.getInt("personID");
 
-                list.add(new Phone(id, phone, personID));
+                list.add(new Phone(ddd, number, personID));
             }
         }
 
@@ -114,11 +114,10 @@ public class PhoneDAO
 
             while ( rs.next() )
             {
-                int id       = rs.getInt("ID_contato");
-                int personID = rs.getInt("ID_Pessoa");
-                String phone = rs.getString("Fone");
+                int ddd       = rs.getInt("ddd");
+                String number = rs.getString("number");
 
-                return new Phone(id, phone, personID);
+                return new Phone(ddd, number, index);
             }
 
             return null;
