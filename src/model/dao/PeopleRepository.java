@@ -32,7 +32,7 @@ public class PeopleRepository
         }
     }
 
-    public void update(final Contact contact) throws SQLException
+    public void update(final Contact contact, final int ID) throws SQLException
     {
         final String SQL = "UPDATE person SET name = ?, sex = ?, birthdate = ?, nacionality = ? WHERE ID = ?";
 
@@ -42,7 +42,7 @@ public class PeopleRepository
             ps.setString(2, Character.toString(contact.getSex()));
             ps.setDate(3, new java.sql.Date(contact.getBirthdate().getTime()));
             ps.setString(4, contact.getNacionality());
-            ps.setInt(5, contact.getID());
+            ps.setInt(5, ID);
 
             ps.executeUpdate();
         }
@@ -79,7 +79,7 @@ public class PeopleRepository
                 var date        = rs.getDate("birthdate");
                 var nacionality = rs.getString("nacionality");
 
-                list.add(new Contact(id, name, sex, date, nacionality));
+                list.add(id, new Contact(name, sex, date, nacionality));
             }
             
             return list;
@@ -103,7 +103,7 @@ public class PeopleRepository
                 var date = rs.getDate("birthdate");
                 var nacionality = rs.getString("nacionality");
 
-                return new Contact(id, name, sex, date, nacionality);
+                return new Contact(name, sex, date, nacionality);
             }
 
             return null;
