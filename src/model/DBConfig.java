@@ -6,12 +6,12 @@ import org.json.JSONObject;
 /**
  *
  */
-final public class ConfigDataBase implements Serializable
+final public class DBConfig implements Serializable
 {
 
     private final String host, port, dbName, dataBase, userName, password;
 
-    public ConfigDataBase(String host, String port, String dbName,
+    public DBConfig(String host, String port, String dbName,
             String dataBase, String userName, String password)
     {
         this.host     = host;
@@ -22,7 +22,7 @@ final public class ConfigDataBase implements Serializable
         this.password = password;
     }
 
-    public ConfigDataBase(JSONObject json)
+    public DBConfig(JSONObject json)
     {
         this.host     = json.getString("host");
         this.port     = json.getString("port");
