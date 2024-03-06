@@ -7,12 +7,12 @@ import java.util.*;
 /**
  *
  */
-public class PeopleRepository
+public class ContactsRepository
 {
 
     private final Connection connection;
 
-    public PeopleRepository(Connection connection)
+    public ContactsRepository(Connection connection)
     {
         this.connection = connection;
     }
