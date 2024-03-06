@@ -19,8 +19,7 @@ public class PersonDAO
 
     public void create(Contact pessoa) throws SQLException
     {
-        String SQL = "INSERT INTO pessoas(nome, sexo, dataNasc, nacionalidade) "
-            + "VALUES (?, ?, ?, ?)";
+        String SQL = "INSERT INTO person(name, sex, birthdate, nacionality) VALUES (?, ?, ?, ?)";
 
         try ( PreparedStatement ps = this.connection.prepareStatement(SQL) )
         {
@@ -35,7 +34,7 @@ public class PersonDAO
 
     public void update(Contact pessoa) throws SQLException
     {
-        String SQL = "UPDATE pessoas set nome = ?, sexo = ?, dataNasc = ?, nacionalidade = ? WHERE ID_Pessoa = ?";
+        String SQL = "UPDATE person SET name = ?, sex = ?, birthdate = ?, nacionality = ? WHERE ID = ?";
 
         try ( PreparedStatement ps = this.connection.prepareStatement(SQL) )
         {
@@ -51,7 +50,7 @@ public class PersonDAO
 
     public void delete(int id) throws SQLException
     {
-        String SQL = "DELETE FROM pessoas WHERE ID_Pessoa = ?";
+        String SQL = "DELETE FROM person WHERE ID = ?";
 
         try ( PreparedStatement ps = this.connection.prepareStatement(SQL) )
         {
@@ -64,7 +63,7 @@ public class PersonDAO
     public List read() throws SQLException
     {
         List list  = new ArrayList();
-        String SQL = "SELECT * FROM pessoas ORDER BY nome";
+        String SQL = "SELECT ID, name, sex, birthdate, nacionality FROM person ORDER BY name";
 
         try (
 			PreparedStatement ps = this.connection.prepareStatement(SQL);
@@ -88,7 +87,7 @@ public class PersonDAO
     
     public Contact findByID(int codigo) throws SQLException
     {
-        String SQL = "SELECT * FROM pessoas WHERE ID_Pessoa = ?";
+        String SQL = "SELECT name, sex, birthdate, nacionality FROM person WHERE ID = ?";
 
         try ( PreparedStatement ps = this.connection.prepareStatement(SQL) )
         {
