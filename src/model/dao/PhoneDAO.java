@@ -64,13 +64,13 @@ public class PhoneDAO
 
         try ( var ps = this.connection.prepareStatement(SQL) )
         {
-            ResultSet rs = ps.executeQuery();
+            var rs = ps.executeQuery();
 
             while ( rs.next() )
             {
-                int ddd       = rs.getInt("ddd");
-                String number = rs.getString("number");
-                int personID  = rs.getInt("personID");
+                var ddd      = rs.getInt("ddd");
+                var number   = rs.getString("number");
+                var personID = rs.getInt("personID");
 
                 list.add(new Phone(ddd, number, personID));
             }
@@ -88,12 +88,12 @@ public class PhoneDAO
         {
             ps.setInt(1, codigo);
 
-            ResultSet rs = ps.executeQuery();
+            var rs = ps.executeQuery();
 
             while ( rs.next() )
             {
-                int ddd = rs.getInt("ddd");
-                String number = rs.getString("number");
+                var ddd    = rs.getInt("ddd");
+                var number = rs.getString("number");
 
                 list.add(new Phone(ddd, number, codigo));
             }
@@ -110,12 +110,12 @@ public class PhoneDAO
         {
             ps.setInt(1, index);
 
-            ResultSet rs = ps.executeQuery();
+            var rs = ps.executeQuery();
 
             while ( rs.next() )
             {
-                int ddd       = rs.getInt("ddd");
-                String number = rs.getString("number");
+                var ddd    = rs.getInt("ddd");
+                var number = rs.getString("number");
 
                 return new Phone(ddd, number, index);
             }
