@@ -17,32 +17,32 @@ public class PersonDAO
         this.connection = connection;
     }
 
-    public void create(Contact pessoa) throws SQLException
+    public void create(Contact contact) throws SQLException
     {
         String SQL = "INSERT INTO person(name, sex, birthdate, nacionality) VALUES (?, ?, ?, ?)";
 
         try ( PreparedStatement ps = this.connection.prepareStatement(SQL) )
         {
-            ps.setString(1, pessoa.getName());
-            ps.setString(2, Character.toString(pessoa.getSex()));
-            ps.setDate(3, new java.sql.Date(pessoa.getBirthdate().getTime()));
-            ps.setString(4, pessoa.getNacionality());
+            ps.setString(1, contact.getName());
+            ps.setString(2, Character.toString(contact.getSex()));
+            ps.setDate(3, new java.sql.Date(contact.getBirthdate().getTime()));
+            ps.setString(4, contact.getNacionality());
 
             ps.executeUpdate();
         }
     }
 
-    public void update(Contact pessoa) throws SQLException
+    public void update(Contact contact) throws SQLException
     {
         String SQL = "UPDATE person SET name = ?, sex = ?, birthdate = ?, nacionality = ? WHERE ID = ?";
 
         try ( PreparedStatement ps = this.connection.prepareStatement(SQL) )
         {
-            ps.setString(1, pessoa.getName());
-            ps.setString(2, Character.toString(pessoa.getSex()));
-            ps.setDate(3, new java.sql.Date(pessoa.getBirthdate().getTime()));
-            ps.setString(4, pessoa.getNacionality());
-            ps.setInt(5, pessoa.getID());
+            ps.setString(1, contact.getName());
+            ps.setString(2, Character.toString(contact.getSex()));
+            ps.setDate(3, new java.sql.Date(contact.getBirthdate().getTime()));
+            ps.setString(4, contact.getNacionality());
+            ps.setInt(5, contact.getID());
 
             ps.executeUpdate();
         }
@@ -66,9 +66,9 @@ public class PersonDAO
         String SQL = "SELECT ID, name, sex, birthdate, nacionality FROM person ORDER BY name";
 
         try (
-			PreparedStatement ps = this.connection.prepareStatement(SQL);
+            PreparedStatement ps = this.connection.prepareStatement(SQL);
             ResultSet rs = ps.executeQuery()
-		)
+	)
         {
             while ( rs.next() )
             {
