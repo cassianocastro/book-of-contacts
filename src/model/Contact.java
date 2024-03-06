@@ -52,12 +52,12 @@ public class Contact
         this.sex = sex;
     }
 
-    public Date getDateNasc()
+    public Date getBirthdate()
     {
         return this.birthdate;
     }
 
-    public void setDateNasc(Date birthdate)
+    public void setBirthdate(Date birthdate)
     {
         this.birthdate = birthdate;
     }
