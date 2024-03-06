@@ -72,11 +72,11 @@ public class PersonDAO
         {
             while ( rs.next() )
             {
-                int id              = rs.getInt("ID_Pessoa");
-                String name         = rs.getString("nome");
-                String nacionality  = rs.getString("nacionalidade");
-                char sex            = rs.getString("sexo").charAt(0);
-                java.util.Date date = rs.getDate("dataNasc");
+                int id              = rs.getInt("ID");
+                String name         = rs.getString("name");
+                String nacionality  = rs.getString("nacionality");
+                char sex            = rs.getString("sex").charAt(0);
+                java.util.Date date = rs.getDate("birthdate");
 
                 list.add(new Contact(id, name, sex, date, nacionality));
             }
@@ -85,23 +85,22 @@ public class PersonDAO
         return list;
     }
     
-    public Contact findByID(int codigo) throws SQLException
+    public Contact findByID(int id) throws SQLException
     {
         String SQL = "SELECT name, sex, birthdate, nacionality FROM person WHERE ID = ?";
 
         try ( PreparedStatement ps = this.connection.prepareStatement(SQL) )
         {
-            ps.setInt(1, codigo);
+            ps.setInt(1, id);
 
             ResultSet rs = ps.executeQuery();
 
             while ( rs.next() )
             {
-                int id = rs.getInt("ID_Pessoa");
-                String name = rs.getString("nome");
-                String nacionality = rs.getString("nacionalidade");
-                char sex = rs.getString("sexo").charAt(0);
-                java.util.Date date = rs.getDate("dataNasc");
+                String name = rs.getString("name");
+                String nacionality = rs.getString("nacionality");
+                char sex = rs.getString("sex").charAt(0);
+                java.util.Date date = rs.getDate("birthdate");
 
                 return new Contact(id, name, sex, date, nacionality);
             }
