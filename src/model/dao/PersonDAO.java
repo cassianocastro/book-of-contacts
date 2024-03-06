@@ -21,7 +21,7 @@ public class PersonDAO
     {
         String SQL = "INSERT INTO person(name, sex, birthdate, nacionality) VALUES (?, ?, ?, ?)";
 
-        try ( PreparedStatement ps = this.connection.prepareStatement(SQL) )
+        try ( var ps = this.connection.prepareStatement(SQL) )
         {
             ps.setString(1, contact.getName());
             ps.setString(2, Character.toString(contact.getSex()));
@@ -36,7 +36,7 @@ public class PersonDAO
     {
         String SQL = "UPDATE person SET name = ?, sex = ?, birthdate = ?, nacionality = ? WHERE ID = ?";
 
-        try ( PreparedStatement ps = this.connection.prepareStatement(SQL) )
+        try ( var ps = this.connection.prepareStatement(SQL) )
         {
             ps.setString(1, contact.getName());
             ps.setString(2, Character.toString(contact.getSex()));
@@ -52,7 +52,7 @@ public class PersonDAO
     {
         String SQL = "DELETE FROM person WHERE ID = ?";
 
-        try ( PreparedStatement ps = this.connection.prepareStatement(SQL) )
+        try ( var ps = this.connection.prepareStatement(SQL) )
         {
             ps.setInt(1, id);
 
@@ -66,17 +66,17 @@ public class PersonDAO
         String SQL = "SELECT ID, name, sex, birthdate, nacionality FROM person ORDER BY name";
 
         try (
-            PreparedStatement ps = this.connection.prepareStatement(SQL);
-            ResultSet rs = ps.executeQuery()
+            var ps = this.connection.prepareStatement(SQL);
+            var rs = ps.executeQuery()
 	)
         {
             while ( rs.next() )
             {
-                int id              = rs.getInt("ID");
-                String name         = rs.getString("name");
-                String nacionality  = rs.getString("nacionality");
-                char sex            = rs.getString("sex").charAt(0);
-                java.util.Date date = rs.getDate("birthdate");
+                var id          = rs.getInt("ID");
+                var name        = rs.getString("name");
+                var sex         = rs.getString("sex").charAt(0);
+                var date        = rs.getDate("birthdate");
+                var nacionality = rs.getString("nacionality");
 
                 list.add(new Contact(id, name, sex, date, nacionality));
             }
@@ -89,18 +89,18 @@ public class PersonDAO
     {
         String SQL = "SELECT name, sex, birthdate, nacionality FROM person WHERE ID = ?";
 
-        try ( PreparedStatement ps = this.connection.prepareStatement(SQL) )
+        try ( var ps = this.connection.prepareStatement(SQL) )
         {
             ps.setInt(1, id);
 
-            ResultSet rs = ps.executeQuery();
+            var rs = ps.executeQuery();
 
             while ( rs.next() )
             {
-                String name = rs.getString("name");
-                String nacionality = rs.getString("nacionality");
-                char sex = rs.getString("sex").charAt(0);
-                java.util.Date date = rs.getDate("birthdate");
+                var name = rs.getString("name");
+                var sex  = rs.getString("sex").charAt(0);
+                var date = rs.getDate("birthdate");
+                var nacionality = rs.getString("nacionality");
 
                 return new Contact(id, name, sex, date, nacionality);
             }
