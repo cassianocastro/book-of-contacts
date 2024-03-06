@@ -22,7 +22,7 @@ public class PhoneDAO
         List list  = new ArrayList();
         String SQL = "SELECT * FROM telefone";
 
-        try ( PreparedStatement ps = this.connection.prepareStatement(SQL) )
+        try ( var ps = this.connection.prepareStatement(SQL) )
         {
             ResultSet rs = ps.executeQuery();
 
@@ -44,7 +44,7 @@ public class PhoneDAO
         List list  = new ArrayList();
         String SQL = "SELECT ddd, number FROM phone WHERE personID = ?";
 
-        try ( PreparedStatement ps = this.connection.prepareStatement(SQL) )
+        try ( var ps = this.connection.prepareStatement(SQL) )
         {
             ps.setInt(1, codigo);
 
@@ -66,7 +66,7 @@ public class PhoneDAO
     {
         String SQL = "INSERT INTO phone(ddd, number, personID) VALUES (?, ?, ?)";
 
-        try ( PreparedStatement ps = this.connection.prepareStatement(SQL) )
+        try ( var ps = this.connection.prepareStatement(SQL) )
         {
             ps.setInt(1, phone.getDDD());
             ps.setString(2, phone.getNumber());
@@ -80,7 +80,7 @@ public class PhoneDAO
     {
         String SQL = "UPDATE phone SET ddd = ?, number = ? WHERE personID = ?";
 
-        try ( PreparedStatement ps = this.connection.prepareStatement(SQL) )
+        try ( var ps = this.connection.prepareStatement(SQL) )
         {
             ps.setInt(1, phone.getDDD());
             ps.setString(2, phone.getNumber());
@@ -93,7 +93,7 @@ public class PhoneDAO
     {
         String SQL = "DELETE FROM phone WHERE personID = ?";
 
-        try ( PreparedStatement ps = this.connection.prepareStatement(SQL) )
+        try ( var ps = this.connection.prepareStatement(SQL) )
         {
             ps.setInt(1, id);
 
@@ -105,7 +105,7 @@ public class PhoneDAO
     {
         String SQL = "SELECT ddd, number FROM phone WHERE personID = ?";
 
-        try ( PreparedStatement ps = this.connection.prepareStatement(SQL) )
+        try ( var ps = this.connection.prepareStatement(SQL) )
         {
             ps.setInt(1, index);
 
