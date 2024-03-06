@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.*;
 import model.Contact;
-import model.dao.PersonDAO;
+import model.dao.PeopleRepository;
 import view.*;
 
 /**
@@ -21,7 +21,7 @@ public class InsertController
     private final JRadioButton radioF;
     private final InsertView insertView;
     private final JButton buttonOkay, buttonCancel;
-    private final PersonDAO personDAO;
+    private final PeopleRepository personDAO;
 
     public InsertController(Connection connection)
     {
@@ -34,7 +34,7 @@ public class InsertController
         this.buttonOkay       = this.insertView.getButtonOkay();
         this.buttonCancel     = this.insertView.getButtonCancel();
 
-        this.personDAO = new PersonDAO(connection);
+        this.personDAO = new PeopleRepository(connection);
 
         this.addButtonListeners();
     }
@@ -57,21 +57,21 @@ public class InsertController
                     char sex           = (radioF.isSelected()) ? 'F' : 'M';
                     Date date          = new SimpleDateFormat("dd/MM/yyyy").parse(fieldDate.getText());
 
-					personDAO.create(new Contact(0, name, sex, date, nacionality));
+                    personDAO.insert(new Contact(0, name, sex, date, nacionality));
 
-					JOptionPane.showMessageDialog(insertView, "Cadastro realizado.");
+                    JOptionPane.showMessageDialog(insertView, "Cadastro realizado.");
                 }
-				catch ( SQLException | ParseException e )
+		catch ( SQLException | ParseException e )
                 {
                     JOptionPane.showMessageDialog(insertView, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
 
                 insertView.dispose();
             }
-			else
-			{
+            else
+            {
                 JOptionPane.showMessageDialog(insertView, "Preencha todos os campos.", "Alert", JOptionPane.INFORMATION_MESSAGE);
-			}
+            }
         });
     }
 }
