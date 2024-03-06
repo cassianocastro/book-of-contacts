@@ -77,7 +77,7 @@ public class HomeController
     {
         this.numberList.removeAll();
 
-		int index = this.comboBox.getSelectedIndex();
+	int index = this.comboBox.getSelectedIndex();
 
         if ( index != -1 )
         {
@@ -87,16 +87,16 @@ public class HomeController
                 Contact person = people.get(index);
                 List<Phone> phones = phoneDAO.findByID(person.getID());
 
-		        this.listModel.clear();
+		this.listModel.clear();
 
                 for ( Phone phone : phones )
                 {
-                    this.listModel.addElement(phone.getPhone());
+                    this.listModel.addElement(phone.getNumber());
                 }
 
                 this.numberList.setModel(this.listModel);
             }
-			catch ( SQLException e )
+            catch ( SQLException e )
             {
 
             }
@@ -117,7 +117,7 @@ public class HomeController
 
                 phoneDAO.create(new Phone(0, phone, person.getID()));
             }
-			catch ( SQLException e )
+            catch ( SQLException e )
             {
 
             }
@@ -132,7 +132,7 @@ public class HomeController
         {
             int index = comboBox.getSelectedIndex();
 
-			if ( index != -1 )
+            if ( index != -1 )
             {
                 try
                 {
@@ -143,20 +143,20 @@ public class HomeController
                     {
                         radioF.setSelected(true);
                     }
-					else
+                    else
                     {
                         radioM.setSelected(true);
                     }
 
                     fieldDate.setText(
-                        new SimpleDateFormat("dd/MM/yyyy").format(person.getDateNasc())
+                        new SimpleDateFormat("dd/MM/yyyy").format(person.getBirthdate())
                     );
 
-					fieldNacionality.setText(person.getNacionality());
+                    fieldNacionality.setText(person.getNacionality());
 
-					loadNumberList();
+                    loadNumberList();
                 }
-				catch ( SQLException e )
+		catch ( SQLException e )
                 {
 
                 }
@@ -189,7 +189,7 @@ public class HomeController
 
 								if ( confirm == JOptionPane.YES_OPTION )
 								{
-									phoneDAO.delete(phones.get(index).getId());
+									phoneDAO.delete(phones.get(index).getDDD());
 									loadNumberList();
 								}
 							}
@@ -197,7 +197,7 @@ public class HomeController
 							{
 								String newPhone = JOptionPane.showInputDialog(null, "Novo telefone:");
 
-								phoneDAO.update(new Phone(phones.get(index).getId(), newPhone, 0));
+								phoneDAO.update(new Phone(phones.get(index).getDDD(), newPhone, 0));
 
 								loadNumberList();
 							}
