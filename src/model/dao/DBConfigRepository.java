@@ -6,7 +6,7 @@ import org.json.JSONObject;
 /**
  *
  */
-public class ConfigDataBaseDAO
+public class DBConfigRepository
 {
 
     public void write(JSONObject json) throws IOException
