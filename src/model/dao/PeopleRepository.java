@@ -7,12 +7,12 @@ import java.util.*;
 /**
  *
  */
-public class PersonDAO
+public class PeopleRepository
 {
 
     private final Connection connection;
 
-    public PersonDAO(Connection connection)
+    public PeopleRepository(Connection connection)
     {
         this.connection = connection;
     }
