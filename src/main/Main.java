@@ -21,9 +21,9 @@ public class Main
             ConfigDataBase config = new ConfigDataBase("localhost", "3306", "mysql", "agenda", "root", "");
             Connection connection = ConnectionSingleton.getInstance(config);
 
-			new HomeController(connection);
+            new HomeController(connection);
         }
-		catch ( SQLException e )
+	catch ( SQLException e )
         {
             throw new RuntimeException(e);
         }
