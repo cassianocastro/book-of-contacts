@@ -42,7 +42,7 @@ public class PhoneDAO
     public List<Phone> findByID(int codigo) throws SQLException
     {
         List list  = new ArrayList();
-        String SQL = "SELECT * FROM telefones WHERE ID_Pessoa = ?";
+        String SQL = "SELECT ddd, number FROM phone WHERE personID = ?";
 
         try ( PreparedStatement ps = this.connection.prepareStatement(SQL) )
         {
@@ -52,11 +52,10 @@ public class PhoneDAO
 
             while ( rs.next() )
             {
-                int id = rs.getInt("ID_contato");
-                int personID = rs.getInt("ID_Pessoa");
-                String phone = rs.getString("Fone");
+                int ddd = rs.getInt("ddd");
+                String number = rs.getString("number");
 
-                list.add(new Phone(id, phone, personID));
+                list.add(new Phone(ddd, number, codigo));
             }
         }
 
@@ -65,7 +64,7 @@ public class PhoneDAO
 
     public void create(Phone phone) throws SQLException
     {
-        String SQL = "INSERT INTO telefones (Fone, ID_Pessoa) VALUES (?, ?)";
+        String SQL = "INSERT INTO phone(ddd, number, personID) VALUES (?, ?, ?)";
 
         try ( PreparedStatement ps = this.connection.prepareStatement(SQL) )
         {
@@ -79,7 +78,7 @@ public class PhoneDAO
 
     public void update(Phone phone) throws SQLException
     {
-        String SQL = "UPDATE telefones set Fone = ? WHERE ID_Contato = ?";
+        String SQL = "UPDATE phone SET ddd = ?, number = ? WHERE personID = ?";
 
         try ( PreparedStatement ps = this.connection.prepareStatement(SQL) )
         {
@@ -92,7 +91,7 @@ public class PhoneDAO
 
     public void delete(int id) throws SQLException
     {
-        String SQL = "DELETE FROM telefones WHERE ID_contato = ?";
+        String SQL = "DELETE FROM phone WHERE personID = ?";
 
         try ( PreparedStatement ps = this.connection.prepareStatement(SQL) )
         {
@@ -104,7 +103,7 @@ public class PhoneDAO
 
     public Phone search(int index) throws SQLException
     {
-        String SQL = "SELECT * FROM telefones WHERE ID_contato = ?";
+        String SQL = "SELECT ddd, number FROM phone WHERE personID = ?";
 
         try ( PreparedStatement ps = this.connection.prepareStatement(SQL) )
         {
