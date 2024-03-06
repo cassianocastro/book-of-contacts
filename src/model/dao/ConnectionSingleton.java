@@ -1,6 +1,6 @@
 package model.dao;
 
-import model.ConfigDataBase;
+import model.DBConfig;
 import java.sql.*;
 
 /**
@@ -13,7 +13,7 @@ public class ConnectionSingleton
 
     private ConnectionSingleton() {}
 
-    static public Connection getInstance(ConfigDataBase config) throws SQLException
+    static public Connection getInstance(DBConfig config) throws SQLException
     {
         if ( connection == null )
         {
