@@ -11,14 +11,14 @@ public class Contact
     private int id;
     private String name, nacionality;
     private char sex;
-    private Date dateNasc;
+    private Date birthdate;
 
-    public Contact(int id, String name, char sex, Date dateNasc, String nacionality)
+    public Contact(int id, String name, char sex, Date birthdate, String nacionality)
     {
         this.id          = id;
         this.name        = name;
         this.sex         = sex;
-        this.dateNasc    = dateNasc;
+        this.birthdate   = birthdate;
         this.nacionality = nacionality;
     }
 
@@ -54,12 +54,12 @@ public class Contact
 
     public Date getDateNasc()
     {
-        return this.dateNasc;
+        return this.birthdate;
     }
 
-    public void setDateNasc(Date dateNasc)
+    public void setDateNasc(Date birthdate)
     {
-        this.dateNasc = dateNasc;
+        this.birthdate = birthdate;
     }
 
     public String getNacionality()
