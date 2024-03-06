@@ -6,34 +6,34 @@ package model;
 public class Phone
 {
 
-    private int id, personID;
-    private String phone;
+    private int ddd, personID;
+    private String number;
 
-    public Phone(int id, String phone, int personID)
+    public Phone(int ddd, String number, int personID)
     {
-        this.id       = id;
-        this.phone    = phone;
+        this.ddd      = ddd;
+        this.number   = number;
         this.personID = personID;
     }
 
     public int getId()
     {
-        return this.id;
+        return this.ddd;
     }
 
-    public void setId(int id)
+    public void setId(int ddd)
     {
-        this.id = id;
+        this.ddd = ddd;
     }
 
     public String getPhone()
     {
-        return this.phone;
+        return this.number;
     }
 
-    public void setPhone(String phone)
+    public void setPhone(String number)
     {
-        this.phone = phone;
+        this.number = number;
     }
 
     public int getPersonID()
