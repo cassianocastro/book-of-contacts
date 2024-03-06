@@ -17,7 +17,7 @@ public class PersonDAO
         this.connection = connection;
     }
 
-    public void create(final Contact contact) throws SQLException
+    public void insert(final Contact contact) throws SQLException
     {
         final String SQL = "INSERT INTO person(name, sex, birthdate, nacionality) VALUES (?, ?, ?, ?)";
 
@@ -60,7 +60,7 @@ public class PersonDAO
         }
     }
     
-    public List read() throws SQLException
+    public List getAll() throws SQLException
     {
         final String SQL = "SELECT ID, name, sex, birthdate, nacionality FROM person ORDER BY name";
 
