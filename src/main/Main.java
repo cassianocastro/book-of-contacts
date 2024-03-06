@@ -1,9 +1,8 @@
 package main;
 
 import java.sql.*;
-import controller.HomeController;
 import model.dao.ConnectionSingleton;
-import model.ConfigDataBase;
+import model.DBConfig;
 
 /**
  *
@@ -16,12 +15,11 @@ public class Main
      */
     static public void main(String args[])
     {
-        try
+        DBConfig config = new DBConfig("localhost", "3306", "mysql", "agenda", "root", "");
+        
+        try ( Connection connection = ConnectionSingleton.getInstance(config) )
         {
-            ConfigDataBase config = new ConfigDataBase("localhost", "3306", "mysql", "agenda", "root", "");
-            Connection connection = ConnectionSingleton.getInstance(config);
-
-            new HomeController(connection);
+            new controller.HomeController(connection);
         }
 	catch ( SQLException e )
         {
