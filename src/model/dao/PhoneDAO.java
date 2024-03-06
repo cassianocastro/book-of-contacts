@@ -17,6 +17,46 @@ public class PhoneDAO
         this.connection = connection;
     }
 
+    public void create(final Phone phone) throws SQLException
+    {
+        final String SQL = "INSERT INTO phone(ddd, number, personID) VALUES (?, ?, ?)";
+
+        try ( var ps = this.connection.prepareStatement(SQL) )
+        {
+            ps.setInt(1, phone.getDDD());
+            ps.setString(2, phone.getNumber());
+            ps.setInt(3, phone.getPersonID());
+
+            ps.executeUpdate();
+        }
+    }
+
+    public void update(final Phone phone) throws SQLException
+    {
+        final String SQL = "UPDATE phone SET ddd = ?, number = ? WHERE personID = ?";
+
+        try ( var ps = this.connection.prepareStatement(SQL) )
+        {
+            ps.setInt(1, phone.getDDD());
+            ps.setString(2, phone.getNumber());
+//            ps.setInt(3, personID);
+            
+            ps.executeUpdate();
+        }
+    }
+
+    public void delete(final int id) throws SQLException
+    {
+        final String SQL = "DELETE FROM phone WHERE personID = ?";
+
+        try ( var ps = this.connection.prepareStatement(SQL) )
+        {
+            ps.setInt(1, id);
+
+            ps.executeUpdate();
+        }
+    }
+    
     public List read() throws SQLException
     {
         List list = new ArrayList();
@@ -60,46 +100,6 @@ public class PhoneDAO
         }
 
         return list;
-    }
-
-    public void create(final Phone phone) throws SQLException
-    {
-        final String SQL = "INSERT INTO phone(ddd, number, personID) VALUES (?, ?, ?)";
-
-        try ( var ps = this.connection.prepareStatement(SQL) )
-        {
-            ps.setInt(1, phone.getDDD());
-            ps.setString(2, phone.getNumber());
-            ps.setInt(3, phone.getPersonID());
-
-            ps.executeUpdate();
-        }
-    }
-
-    public void update(final Phone phone) throws SQLException
-    {
-        final String SQL = "UPDATE phone SET ddd = ?, number = ? WHERE personID = ?";
-
-        try ( var ps = this.connection.prepareStatement(SQL) )
-        {
-            ps.setInt(1, phone.getDDD());
-            ps.setString(2, phone.getNumber());
-//            ps.setInt(3, personID);
-            
-            ps.executeUpdate();
-        }
-    }
-
-    public void delete(final int id) throws SQLException
-    {
-        final String SQL = "DELETE FROM phone WHERE personID = ?";
-
-        try ( var ps = this.connection.prepareStatement(SQL) )
-        {
-            ps.setInt(1, id);
-
-            ps.executeUpdate();
-        }
     }
 
     public Phone search(final int index) throws SQLException
