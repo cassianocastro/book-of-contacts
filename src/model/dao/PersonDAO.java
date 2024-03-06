@@ -17,9 +17,9 @@ public class PersonDAO
         this.connection = connection;
     }
 
-    public void create(Contact contact) throws SQLException
+    public void create(final Contact contact) throws SQLException
     {
-        String SQL = "INSERT INTO person(name, sex, birthdate, nacionality) VALUES (?, ?, ?, ?)";
+        final String SQL = "INSERT INTO person(name, sex, birthdate, nacionality) VALUES (?, ?, ?, ?)";
 
         try ( var ps = this.connection.prepareStatement(SQL) )
         {
@@ -32,9 +32,9 @@ public class PersonDAO
         }
     }
 
-    public void update(Contact contact) throws SQLException
+    public void update(final Contact contact) throws SQLException
     {
-        String SQL = "UPDATE person SET name = ?, sex = ?, birthdate = ?, nacionality = ? WHERE ID = ?";
+        final String SQL = "UPDATE person SET name = ?, sex = ?, birthdate = ?, nacionality = ? WHERE ID = ?";
 
         try ( var ps = this.connection.prepareStatement(SQL) )
         {
@@ -48,9 +48,9 @@ public class PersonDAO
         }
     }
 
-    public void delete(int id) throws SQLException
+    public void delete(final int id) throws SQLException
     {
-        String SQL = "DELETE FROM person WHERE ID = ?";
+        final String SQL = "DELETE FROM person WHERE ID = ?";
 
         try ( var ps = this.connection.prepareStatement(SQL) )
         {
@@ -62,14 +62,15 @@ public class PersonDAO
     
     public List read() throws SQLException
     {
-        List list  = new ArrayList();
-        String SQL = "SELECT ID, name, sex, birthdate, nacionality FROM person ORDER BY name";
+        final String SQL = "SELECT ID, name, sex, birthdate, nacionality FROM person ORDER BY name";
 
         try (
             var ps = this.connection.prepareStatement(SQL);
             var rs = ps.executeQuery()
 	)
         {
+            List list = new ArrayList();
+            
             while ( rs.next() )
             {
                 var id          = rs.getInt("ID");
@@ -80,14 +81,14 @@ public class PersonDAO
 
                 list.add(new Contact(id, name, sex, date, nacionality));
             }
+            
+            return list;
         }
-
-        return list;
     }
     
-    public Contact findByID(int id) throws SQLException
+    public Contact findByID(final int id) throws SQLException
     {
-        String SQL = "SELECT name, sex, birthdate, nacionality FROM person WHERE ID = ?";
+        final String SQL = "SELECT name, sex, birthdate, nacionality FROM person WHERE ID = ?";
 
         try ( var ps = this.connection.prepareStatement(SQL) )
         {
