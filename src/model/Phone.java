@@ -16,22 +16,22 @@ public class Phone
         this.personID = personID;
     }
 
-    public int getId()
+    public int getDDD()
     {
         return this.ddd;
     }
 
-    public void setId(int ddd)
+    public void setDDD(int ddd)
     {
         this.ddd = ddd;
     }
 
-    public String getPhone()
+    public String getNumber()
     {
         return this.number;
     }
 
-    public void setPhone(String number)
+    public void setNumber(String number)
     {
         this.number = number;
     }
