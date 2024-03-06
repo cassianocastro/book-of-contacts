@@ -17,7 +17,7 @@ public class PhonesRepository
         this.connection = connection;
     }
 
-    public void create(final Phone phone) throws SQLException
+    public void insert(final Phone phone) throws SQLException
     {
         final String SQL = "INSERT INTO phone(ddd, number, personID) VALUES (?, ?, ?)";
 
@@ -57,7 +57,7 @@ public class PhonesRepository
         }
     }
     
-    public List read() throws SQLException
+    public List getAll() throws SQLException
     {
         List list = new ArrayList();
         final String SQL = "SELECT ddd, number, personID FROM phone";
