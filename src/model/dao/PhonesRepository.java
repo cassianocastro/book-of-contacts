@@ -7,12 +7,12 @@ import java.util.*;
 /**
  *
  */
-public class PhoneDAO
+public class PhonesRepository
 {
 
     private final Connection connection;
 
-    public PhoneDAO(Connection connection)
+    public PhonesRepository(Connection connection)
     {
         this.connection = connection;
     }
