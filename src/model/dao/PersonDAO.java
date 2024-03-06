@@ -51,7 +51,7 @@ public class PersonDAO
         {
             ps.setString(1, pessoa.getName());
             ps.setString(2, Character.toString(pessoa.getSex()));
-            ps.setDate(3, new java.sql.Date(pessoa.getDateNasc().getTime()));
+            ps.setDate(3, new java.sql.Date(pessoa.getBirthdate().getTime()));
             ps.setString(4, pessoa.getNacionality());
 
             ps.executeUpdate();
@@ -66,7 +66,7 @@ public class PersonDAO
         {
             ps.setString(1, pessoa.getName());
             ps.setString(2, Character.toString(pessoa.getSex()));
-            ps.setDate(3, new java.sql.Date(pessoa.getDateNasc().getTime()));
+            ps.setDate(3, new java.sql.Date(pessoa.getBirthdate().getTime()));
             ps.setString(4, pessoa.getNacionality());
             ps.setInt(5, pessoa.getID());
 
